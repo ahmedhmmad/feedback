@@ -4,6 +4,7 @@ import "./App.css";
 import Header from "./components/Header";
 import FeedbackList from "./components/FeedbackList";
 import FeedbackData from "./data/FeedbackData";
+import FeedbackStates from "./components/FeedbackStates";
 
 function App() {
   //! State :: Get Data from FeedbackData.js
@@ -17,6 +18,7 @@ function App() {
     <div className="App">
       <Header text="Hello from Props" />
       <div className="container">
+        <FeedbackStates feedback={feedback} />
         <FeedbackList feedback={feedback} HandleDelete={DeleteFeedback} />
       </div>
     </div>
