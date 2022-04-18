@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import { useState } from "react";
+import "./App.css";
+import Header from "./components/Header";
+import FeedbackList from "./components/FeedbackList";
+import FeedbackData from "./data/FeedbackData";
+import FeedbackStates from "./components/FeedbackStates";
 
 function App() {
+  //! State :: Get Data from FeedbackData.js
+  const [feedback, setFeedback] = useState(FeedbackData);
+  const DeleteFeedback = (id) => {
+    if (window.confirm("Are You Sure?")) {
+      setFeedback(feedback.filter((item) => item.id !== id));
+    }
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header text="Hello from Props" />
+      <div className="container">
+        <FeedbackStates feedback={feedback} />
+        <FeedbackList feedback={feedback} HandleDelete={DeleteFeedback} />
+      </div>
     </div>
   );
 }
