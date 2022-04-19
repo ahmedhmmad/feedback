@@ -4,8 +4,9 @@ import Card from "./shared/Card";
 import Button from "./shared/Button";
 import SelectedFeedback from "./SelectedFeedback";
 
-function FeedbackForm() {
+function FeedbackForm({ handleAdd }) {
   const [text, setText] = useState("");
+  const [rating, setRating] = useState(0);
   const [isDisabled, setDisabled] = useState(true);
   const [message, setMessage] = useState("");
   const handleTextChange = (e) => {
@@ -20,11 +21,20 @@ function FeedbackForm() {
       setMessage("Please enter at least 10 characters");
     }
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newFeedback = {
+      text,
+      rating,
+    };
+    handleAdd(newFeedback);
+    setText("");
+  };
   return (
     <Card>
       <h3>How would You like to Rate our Service?</h3>
-      <SelectedFeedback />
-      <form>
+      <SelectedFeedback select={(rating) => setRating(rating)} />
+      <form onSubmit={handleSubmit}>
         <div className="input-group">
           <input
             type="text"
