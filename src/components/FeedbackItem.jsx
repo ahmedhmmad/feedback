@@ -24,7 +24,9 @@ function FeedbackItem({ item, HandleDelete }) {
           <FaTimes color="purple" />
         </button>
       </Card>
-      <button onClick={reverseHandler}>Reverse</button>
+      <button className="btn btn-secondary" onClick={reverseHandler}>
+        Reverse
+      </button>
     </div>
   );
 }
