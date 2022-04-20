@@ -1,9 +1,6 @@
 import React from "react";
 import FeedbackItem from "./FeedbackItem";
-<<<<<<< HEAD
 import { motion, AnimatePresence } from "framer-motion";
-=======
->>>>>>> main
 
 function FeedbackList({ feedback, HandleDelete }) {
   console.log(feedback.length);
