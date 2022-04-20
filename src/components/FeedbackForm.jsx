@@ -9,6 +9,7 @@ function FeedbackForm({ handleAdd }) {
   const [rating, setRating] = useState(0);
   const [isDisabled, setDisabled] = useState(true);
   const [message, setMessage] = useState("");
+  
   const handleTextChange = (e) => {
     e.preventDefault();
     console.log(e.target.value);

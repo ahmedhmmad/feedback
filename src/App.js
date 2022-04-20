@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import { useState } from "react";
 import "./App.css";
+import { v4 as uuidv4 } from "uuid";
 
 import FeedbackList from "./components/FeedbackList";
 import FeedbackData from "./data/FeedbackData";
@@ -16,9 +17,9 @@ function App() {
     }
   };
   const addFeedback = (newFeedback) => {
-    newFeedback.id = Date.now();
+    newFeedback.id = uuidv4();
     setFeedback([...feedback, newFeedback]);
-    //console.log(newFeedback);
+    console.log(newFeedback);
   };
   return (
     <div className="App">
