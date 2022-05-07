@@ -1,10 +1,10 @@
 import Card from "./shared/Card";
 import { useState, useContext } from "react";
-import { FaTimes } from "react-icons/fa";
+import { FaTimes, FaEdit } from "react-icons/fa";
 import FeedbackContext from "../context/FeedbackContext";
 
 function FeedbackItem({ item }) {
-  const { DeleteFeedback } = useContext(FeedbackContext);
+  const { DeleteFeedback, editFeedback } = useContext(FeedbackContext);
   const [reverse, setReverse] = useState(false);
   const reverseHandler = () => {
     setReverse(!reverse);
@@ -24,6 +24,14 @@ function FeedbackItem({ item }) {
           className="close"
         >
           <FaTimes color="purple" />
+        </button>
+        <button
+          onClick={() => {
+            editFeedback(item);
+          }}
+          className="edit"
+        >
+          <FaEdit color="purple" />
         </button>
       </Card>
       <button className="btn btn-secondary" onClick={reverseHandler}>
