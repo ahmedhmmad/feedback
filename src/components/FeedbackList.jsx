@@ -3,15 +3,18 @@ import FeedbackItem from "./FeedbackItem";
 import { useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import FeedbackContext from "./../context/FeedbackContext";
+import Spinner from "./shared/Spinner";
 
 function FeedbackList({ HandleDelete }) {
-  const { feedback } = useContext(FeedbackContext);
-  
+  const { isLoading, feedback } = useContext(FeedbackContext);
+
   console.log(feedback.length);
-  if (!feedback || feedback.length === 0) {
+  if (!isLoading && (!feedback || feedback.length === 0)) {
     return <div>No feedback found</div>;
   }
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div className="feedback-list">
       <AnimatePresence>
         {feedback.map((item) => (
